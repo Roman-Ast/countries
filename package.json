@@ -1,0 +1,25 @@
+{
+  "name": "countries",
+  "version": "1.0.0",
+  "description": "countries & cities",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Roman-Ast/countries.git"
+  },
+  "author": "Roman-Ast",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Roman-Ast/countries/issues"
+  },
+  "homepage": "https://github.com/Roman-Ast/countries#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "git": "^0.1.5"
+  }
+}
