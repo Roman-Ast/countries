@@ -1,0 +1,66 @@
+body {
+  background: #eee;
+}
+.bd-example {
+  max-height: 95vh;
+}
+#carouselExampleCaptions {
+  max-height: 95vh;
+}
+.carousel-inner {
+  max-height: 95vh;
+}
+.navbar {
+  background-color: #222;
+  border-top: 3px solid #111;
+  display: flex;
+}
+.form-inline {
+  width: 97%;
+  display: flex;
+  justify-content: center;
+}
+.home {
+  display: flex;
+}
+.form-control {
+  width: 50%;
+}
+#grid {
+  width: 80vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: 49% 49%;
+  height: 87vh;
+  grid-gap: 2%;
+  z-index: 100;
+}
+
+.grid-item {
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+.empty {
+  border: none;
+}
+.cities {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 7;
+  grid-row-end: 11;
+  overflow: scroll;
+}
+.flag {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 7;
+}
+.other {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 7;
+  grid-row-end: 11;
+  overflow: scroll;
+}

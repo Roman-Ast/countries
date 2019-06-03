@@ -1,16 +1,2 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Countries</title>
-    <link rel="stylesheets" href="../dev/styles/style.css"
-  </head>
-  <body>
-    <a href="/send">send a form</a>
-    <ul>
-      <% arr.forEach(function(el){ %>
-      <li><%= el%></li>
-      <% }); %>
-    </ul>
-  </body>
-</html>
+<% include layout/header.ejs %> <% include layout/main.ejs %> <% include
+layout/search.ejs %> <% include layout/footer.ejs %>
