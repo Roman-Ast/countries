@@ -11,31 +11,40 @@ const schema = new Schema({
     required: true
   },
   oficialLanguages: {
-    type: Array
+    type: Array,
+    required: true
   },
   cities: {
-    type: Array
+    type: Array,
+    required: true
   },
   population: {
-    type: String
+    type: String,
+    required: true
   },
   square: {
-    type: String
+    type: String,
+    required: true
   },
   flag: {
-    type: String
+    type: String,
+    required: true
   },
   telCode: {
-    type: String
+    type: String,
+    required: true
   },
   geoCoordinats: {
-    type: Array
+    type: Array,
+    required: true
   },
   backgroundPic: {
-    type: String
+    type: String,
+    required: true
   },
   other: {
-    type: String
+    type: String,
+    required: true
   }
 });
 

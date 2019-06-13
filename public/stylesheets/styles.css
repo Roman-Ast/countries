@@ -2,29 +2,18 @@ body {
   background: #eee;
 }
 .bd-example {
-  max-height: 95vh;
+  max-height: 93.5vh;
 }
 #carouselExampleCaptions {
-  max-height: 95vh;
+  max-height: 93.5vh;
 }
 .carousel-inner {
-  max-height: 95vh;
+  max-height: 93.5vh;
 }
 .navbar {
   background-color: #222;
   border-top: 3px solid #111;
   display: flex;
-}
-.form-inline {
-  width: 97%;
-  display: flex;
-  justify-content: center;
-}
-.home {
-  display: flex;
-}
-.form-control {
-  width: 50%;
 }
 #grid {
   width: 80vw;
@@ -63,4 +52,50 @@ body {
   grid-row-start: 7;
   grid-row-end: 11;
   overflow: scroll;
+}
+
+/*create*/
+.container{
+  height: 86.2vh;
+}
+.form-group{
+  display: flex;
+  flex-direction: column;
+}
+.forms{
+  display: grid;
+  grid-template-rows: repeat(9, 1fr);
+  grid-template-columns: 49% 49%;
+  grid-gap: 2%;
+  height: 80vh;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: inset 2px 2px 2px #ccc;
+  margin-bottom: 10px;
+}
+.send{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+#cities{
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 4;
+  grid-row-end: 6;
+}
+#other{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 7;
+  grid-row-end: 10;
+}
+.alert{
+  display: flex;
+  justify-content: center;
+}
+.error{
+  border:1px solid red;
 }

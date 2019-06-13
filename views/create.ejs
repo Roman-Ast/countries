@@ -1,0 +1,79 @@
+<% include layout/header.ejs %> 
+<div class="alert alert-primary">
+    Вы можете помочь нам наполнять нашу базу!
+    Заполните поля ниже и отправьте данные нам. Спасибо!
+</div>
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" class="close-big" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="container">
+    <div >
+        <form method="POST" class="forms">
+            <div class="form-group" id="country">
+                <label for="country">Страна</label>
+                <input type="text" name="country" placeholder="введите название страны">
+            </div>
+            <div class="form-group" id="capital">
+                <label for="capital">Столица</label>
+                <input type="text" name="capital" placeholder="введите название столицы">
+            </div>
+            <div class="form-group" id="oficialLanguages">
+                <label for="oficialLanguages">Официальные языки</label>
+                <input type="text" name="oficialLanguages" placeholder="введите названия языков(если несколько, то через запятую)">
+            </div>
+            <div class="form-group" id="cities">
+                <label for="cities">Города</label>
+                <textarea name="cities" placeholder="введите название городов через запятую" rows="5"></textarea>
+            </div>
+            <div class="form-group" id="population">
+                <label for="population">Население</label>
+                <input type="text" name="population" placeholder="население">
+            </div>
+            <div class="form-group">
+                <label for="square">Площадь</label>
+                <input type="text" name="square" placeholder="введите площадь в квадратных км.">
+            </div>
+            
+            <div class="form-group" id="flag">
+                <label for="flag">Флаг</label>
+                <input type="text" name="flag" placeholder="вставьте ссылку на изображение с флагом">
+            </div>
+            <div class="form-group" id="telCode">
+                <label for="telCode">Телефонный код</label>
+                <input type="text" name="telCode" placeholder="введите телефонный код">
+            </div>
+            <div class="form-group" id="geoCoordinats">
+                <label for="geoCoordinats">Координаты</label>
+                <input type="text" name="geoCoordinats" placeholder="введите координаты через запятую">
+            </div>
+            <div class="form-group" id="backgroundPic">
+                <label for="backgroundPic">Коллаж</label>
+                <input type="text" name="backgroundPic" placeholder="вставьте ссылку на изображение">
+            </div>
+            <div class="form-group" id="other">
+                <label for="other">Интересная информация</label>
+                <textarea name="other" placeholder="введите текст" rows="8"></textarea>
+            </div>
+        </form>
+    </div>
+    <div class="send">
+        <button class="btn btn-success" type="submit" id="createRecord">Отправить</button>
+    </div>
+</div>
+<% include layout/search.ejs %> 
+<% include layout/footer.ejs %>

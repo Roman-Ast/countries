@@ -20,7 +20,7 @@ const database = () => {
       .on('close', () => console.log('Database connection closed.'))
       .once('open', () => resolve(mongoose.connections[0]));
 
-    mongoose.connect(config.MONGO_URL, { useNewUrlParser: true });
+    mongoose.connect('mongodb://localhost/countries', { useNewUrlParser: true });
   });
 };
 
@@ -44,6 +44,13 @@ app.get('/', (req, res) => {
     valueOfInput: 'search'
   });
 });
+app.get('/create', (req, res) => {
+  res.render('create', {
+    valueOfSelect: 'default',
+    valueOfInput: 'search',
+
+  });
+})
 app.get('/find', (req, res) => {
   res.render('find', {
     country: recordInDb,
@@ -72,6 +79,24 @@ app.post('/', async (req, res) => {
     throw new Error(error);
   }
 });
+
+app.post('/create', async (req, res) => {
+  try {
+    const record = await Country.create(req.body);
+    
+    if(record){
+      res.json({
+        ok: true
+      })
+    }
+  } catch (error) {
+    res.json({
+      ok: false,
+      fields:req.body
+    });
+    throw new Error(error);
+  }
+})
 
 database()
   .then(info => {
