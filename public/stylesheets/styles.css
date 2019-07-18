@@ -99,3 +99,45 @@ body {
 .error{
   border:1px solid red;
 }
+.hasInBase{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  background-color: #333;
+  position: absolute;
+  height: 70px;
+  z-index: 3;
+}
+.authorization{
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  color: rgb(4, 161, 4);
+}
+.labels{
+  display: flex;
+  width: 100%;
+  min-height: 70px;
+  justify-content: space-between;
+  align-items: center;
+}
+.formsContainer{
+  width: 100%;
+  position: relative;
+}
+.registration-form{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.sign-in-form{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  display: none;
+}

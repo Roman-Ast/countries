@@ -4,10 +4,33 @@ $(document).ready(function() {
   $('.modal-footer button, .close').on('click', function () {
     $('.modal').slideUp(500, function () {
       $('.forms').children().children().removeClass('error');
+      $('.forms').children().children().val();
     });
   })
 
- 
+  $('.selectFromDb').on('change', function(e) {
+    e.preventDefault();
+
+    const data = {
+      type: 'country',
+      name: $(this).val()
+    };
+    $.ajax({
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'application/json',
+      url: '/'
+    }).done(function(data) {
+      if (data.ok) {
+        $(location).attr('href', '/find');
+      } else {
+        alert(
+          'Извините мы еще не добавили эти данные в базу, или Вы ввели неверные данные!'
+        );
+      }
+    });
+  });
+
   let valueOfSelect = '';
   $('#inlineFormCustomSelectPref').on('change', function() {
     valueOfSelect = $(this).val();
@@ -78,4 +101,72 @@ $(document).ready(function() {
       }
     });
   })
+
+  $('.btn-register').on('click', function (e) {
+    e.preventDefault();
+
+    if ($('#register-name').val().length < 3) {
+      alert('Логин должен состоять как минимум из 3 символов!');
+    } else if ($('#register-password').val().length < 5) {
+      alert('Пароль должен состоять как минимум из 5 символов!');
+    }
+    else if ($('#register-password').val() !== $('#register-confirm-password').val()) {
+      alert('Пароли не соответствуют!');
+    } else {
+      const data = {
+        login: $('#register-name').val(),
+        password: $('#register-password').val(),
+        confirmPassword: $('#register-confirm-password').val(),
+      }
+
+      $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        url: '/register'
+      }).done(function (data) {
+        if (!data.ok) {
+          alert(data.message);
+        } else {
+          alert(data.message);
+          $(location).attr('href', '/');
+        }
+      })
+    }
+    
+
+    
+  })
+
+  $('.btn-sign-in').on('click', function (e) {
+    e.preventDefault();
+
+    const data = {
+      login: $('#login-name').val(),
+      password: $('#login-password').val()
+    }
+
+    $.ajax({
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'application/json',
+      url: '/login'
+    }).done(function (data) {
+      if (!data.ok) {
+        alert(data.message);
+      } else {
+        $(location).attr('href', '/');
+      }
+    })
+  })
+
+  $('.reg').on('click', function () {
+    $('.registration-form').css({'display': 'flex'});
+    $('.sign-in-form').css({'display': 'none'});
+  })
+  $('.sign-in').on('click', function () {
+    $('.sign-in-form').css({'display': 'flex'});
+    $('.registration-form').css({'display': 'none'});
+  })
+  
 });

@@ -1,3 +1,75 @@
+<div class="hasInBase">
+    <% if (!user.login) { %>
+  <div class="selectDiv">
+    <select class="selectFromDb custom-select my-1 mr-sm-2">
+        <% if (Number(countriesLength.substr(countriesLength.length-1, 1)) === 1) { %>
+          <option selected>Всего в базе <%=countriesLength%> страна</option>
+        <% } else if (Number(countriesLength.substr(countriesLength.length-1, 1)) > 1 && Number(countriesLength.substr(countriesLength.length-1, 1)) < 5) {%>
+          <option selected>Всего в базе <%=countriesLength%> страны</option>
+          <%} else {%>
+            <option selected>Всего в базе <%=countriesLength%> стран</option>
+            <%}%>
+      
+      <% recordsFromDb.forEach(function(el){ %>
+        <option value="<%=el.country%>"><%=el.country%></option>
+      <% }); %>
+    </select>
+  </div>
+  <div class="authorization">
+    <div class="labels">
+      <div class="reg">Регистрация</div>
+      <div class="sign-in">Войти</div>
+    </div>
+    <div class="formsContainer">
+      <form class="registration-form" method="POST">
+        <div class="form-group">
+          <label for="nickName">Nickname</label>
+          <input type="text" id="register-name" placeholder="type your nickname here" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="register-password" placeholder="type your password here" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="password">Confirm password</label>
+          <input type="password" id="register-confirm-password" placeholder="confirm your password here" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary btn-register">Зарегестрироваться</button>
+      </form>
+      <form class="sign-in-form">
+        <div class="form-group">
+          <label for="nickName">Nickname</label>
+          <input type="text" id="login-name" placeholder="type your nickname here" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="login-password" placeholder="type your password here" class="form-control"> 
+        </div>
+        <button type="submit" class="btn btn-success btn-sign-in">Войти</button>
+      </form>
+    </div>
+  </div>
+  <% } else {%>
+    <div class="greeting">Привет <%= user.login %></div>
+    <div class="selectDiv">
+    <select class="selectFromDb custom-select my-1 mr-sm-2">
+        <% if (Number(countriesLength.substr(countriesLength.length-1, 1)) === 1) { %>
+          <option selected>Всего в базе <%=countriesLength%> страна</option>
+        <% } else if (Number(countriesLength.substr(countriesLength.length-1, 1)) > 1 && Number(countriesLength.substr(countriesLength.length-1, 1)) < 5) {%>
+          <option selected>Всего в базе <%=countriesLength%> страны</option>
+          <%} else {%>
+            <option selected>Всего в базе <%=countriesLength%> стран</option>
+            <%}%>
+      <% recordsFromDb.forEach(function(el){ %>
+        <option value="<%=el.country%>"><%=el.country%></option>
+      <% }); %>
+    </select>
+  </div>
+  <form class="logout" method="GET">
+    <a href="/logout">Выйти</a>
+    </form>
+  <% } %>
+</div>
 <div class="bd-example">
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
