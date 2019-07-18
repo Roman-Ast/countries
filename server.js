@@ -51,24 +51,28 @@ app.use(
   '/javascripts',
   express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist'))
 );
+
+
+let arrayOfCountriesAlreadyInDB;
+Country.find({}).then(country => arrayOfCountriesAlreadyInDB = country.slice());
+
+
 const recordInDb = [];
+
+
   // get requests
 // main page
 app.get('/', async (req, res) => {
   const id = await req.session.userId;
   const login = await req.session.userLogin;
   try {
-    Country.find({}, (err, country) => {
-      if(!err){
-        res.render('index', {
-          valueOfSelect: 'default',
-          valueOfInput: 'search',
-          recordsFromDb: country,
-          countriesLength: String(country.length),
-          url: {},
-          user: { id, login }
-        });
-      }
+    res.render('index', {
+      valueOfSelect: 'default',
+      valueOfInput: 'search',
+      recordsFromDb: arrayOfCountriesAlreadyInDB,
+      countriesLength: String(arrayOfCountriesAlreadyInDB.length),
+      url: {},
+      user: { id, login }
     });
   } catch (error) {
     throw new Error(error);
@@ -79,6 +83,8 @@ app.get('/create', (req, res) => {
   const login = req.session.userLogin;
 
   res.render('create', {
+    recordsFromDb: arrayOfCountriesAlreadyInDB,
+    countriesLength: String(arrayOfCountriesAlreadyInDB.length),
     valueOfSelect: 'default',
     valueOfInput: 'search',
     url: req.url,
@@ -86,12 +92,17 @@ app.get('/create', (req, res) => {
   });
 })
 app.get('/find', (req, res) => {
+  const id = req.session.userId;
+  const login = req.session.userLogin;
+
   res.render('find', {
+    recordsFromDb: arrayOfCountriesAlreadyInDB,
+    countriesLength: String(arrayOfCountriesAlreadyInDB.length),
     country: recordInDb,
     valueOfSelect: 'default',
     valueOfInput: 'search',
     url: req.url,
-    user: {}
+    user: { id, login }
   });
 });
 
@@ -132,7 +143,7 @@ app.post('/register', (req, res) => {
             req.session.userLogin = user.login;
             res.json({
               ok: true,
-              message: 'пользователь успешно создан!'
+              message: 'пользователь успешно создан!',
             });
           })
           .catch(err => {
@@ -176,7 +187,7 @@ app.post('/login', async (req, res) => {
           req.session.userLogin = user.login;
           res.json({
             ok: true,
-            message: 'Вы вошли как ' + user.login 
+            message: 'Вы вошли как ' + user.login
           })
         }
       });

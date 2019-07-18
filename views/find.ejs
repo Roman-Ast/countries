@@ -1,44 +1,41 @@
-<% include layout/header.ejs %> <% include layout/search.ejs %> <% if (country)
-{ %>
-
-<div style="z-index: 100;position: absolute;width: 100%;margin-top: 10px;">
-  <div id="grid">
-    <div class="grid-item"><%=country[0].country%></div>
-    <div class="grid-item"><%=country[0].square%></div>
-    <div class="grid-item"><%=country[0].capital%></div>
-    <div class="grid-item"><%=country[0].geoCoordinats%></div>
-    <div class="grid-item"><%=country[0].population%></div>
-    <div class="grid-item flag" style="display: flex;">
-      <img src="<%=country[0].flag%>" style="width: 100%" />
-    </div>
-    <div class="grid-item">
-      <% country[0].oficialLanguages.forEach(function(el){ %>
-      <span><%=el%>,</span>
-      <% }); %>
-    </div>
-    <div class="grid-item"><%=country[0].telCode%></div>
-    <div class="grid-item empty"></div>
-    <div class="grid-item other"><%=country[0].other%></div>
-    <div class="grid-item cities">
-      <% country[0].cities.forEach(function(el){ %>
-      <li style="text-decoration: none;"><%=el%></li>
-      <% }); %>
+<% include layout/header.ejs %>
+<div class="box">
+  <div style="z-index: 100;position: absolute;width: 100%;margin-top: 10px;">
+    <div id="grid">
+      <div class="grid-item"><%=country[0].country%></div>
+      <div class="grid-item"><%=country[0].square%></div>
+      <div class="grid-item"><%=country[0].capital%></div>
+      <div class="grid-item"><%=country[0].geoCoordinats%></div>
+      <div class="grid-item"><%=country[0].population%></div>
+      <div class="grid-item flag" style="display: flex;">
+        <img src="<%=country[0].flag%>" style="width: 100%" />
+      </div>
+      <div class="grid-item">
+        <% country[0].oficialLanguages.forEach(function(el){ %>
+        <span><%=el%>,</span>
+        <% }); %>
+      </div>
+      <div class="grid-item"><%=country[0].telCode%></div>
+      <div class="grid-item empty"></div>
+      <div class="grid-item other"><%=country[0].other%></div>
+      <div class="grid-item cities">
+        <% country[0].cities.forEach(function(el){ %>
+        <li style="text-decoration: none;"><%=el%></li>
+        <% }); %>
+      </div>
     </div>
   </div>
+  <div
+    style="width: 100%;
+    position: absolute; 
+    height:90vh; 
+    background-image: url(<%=country[0].backgroundPic%>);
+    background-size:cover;
+    opacity: 0.5;"
+  >
+  <% if (url === '/find') { %>
+    <h5>автор: <%= country[0].author %></h5>
+    <% } %>
+  </div>
 </div>
-<div
-  style="width: 100%;
-  position: absolute; 
-  height:95vh; 
-  background-image: url(<%=country[0].backgroundPic%>);
-  background-size:cover;
-  opacity: 0.5;"
->
-<% if (url === '/find') { %>
-  <h5>автор: <%= country[0].author %></h5>
-<% } %>
-</div>
-  <% } else { %>
-  <h3>Пожалуйста, воспользуйтесь поиском сверху</h3>
-  <% } %> <% include layout/footer.ejs %>
-</div>
+  <% include layout/footer.ejs %>

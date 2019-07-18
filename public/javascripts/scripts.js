@@ -137,9 +137,6 @@ $(document).ready(function() {
         }
       })
     }
-    
-
-    
   })
 
   $('.btn-sign-in').on('click', function (e) {
@@ -164,12 +161,24 @@ $(document).ready(function() {
     })
   })
 
-  $('.reg').on('click', function () {
-    $('.registration-form').css({'display': 'flex'});
+  $('.reg').on('mouseenter', function () {
+    $(this).css({ 'color': '#fff'});
+    $(this).addClass('scale');
+    $('.registration-form').slideDown(400);
     $('.sign-in-form').css({'display': 'none'});
   })
-  $('.sign-in').on('click', function () {
-    $('.sign-in-form').css({'display': 'flex'});
+  $('.reg').on('mouseleave', function () {
+    $(this).css({ 'color': 'rgb(4, 161, 4)'});
+    $(this).removeClass('scale');
+  })
+  $('.sign-in').on('mouseleave', function () {
+    $(this).css({ 'color': 'rgb(4, 161, 4)'});
+    $(this).removeClass('scale');
+  })
+  $('.sign-in').on('mouseenter', function () {
+    $(this).css({ 'color': '#fff'});
+    $(this).addClass('scale');
+    $('.sign-in-form').slideDown(400);
     $('.registration-form').css({'display': 'none'});
   })
   $('.logout').on('mouseover', function () {
@@ -180,5 +189,8 @@ $(document).ready(function() {
     $(this).css({'background': ''});
     $('.logout a:first-child').css({'color': 'rgb(212, 25, 25)'});
   })
-  
+  $('.authorization').on('mouseleave', function () {
+    $('.registration-form').slideUp(400);
+    $('.sign-in-form').slideUp(400);
+  })
 });

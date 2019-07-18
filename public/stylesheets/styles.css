@@ -1,19 +1,26 @@
 body {
   background: #eee;
 }
-.bd-example {
-  max-height: 93.5vh;
-}
 #carouselExampleCaptions {
-  max-height: 93.5vh;
+  max-height: 85vh;
 }
 .carousel-inner {
-  max-height: 93.5vh;
+  max-height: 85vh;
+}
+.box{
+  position: relative;
+  height: 84.6vh;
+  width: 100%;
+}
+.bd-example{
+  position: absolute;
 }
 .navbar {
-  background-color: #222;
-  border-top: 3px solid #111;
+  background-color: #333;
   display: flex;
+  justify-content: space-between;
+  height: 70px;
+  align-items: flex-start;
 }
 #grid {
   width: 80vw;
@@ -21,11 +28,10 @@ body {
   display: grid;
   grid-template-rows: repeat(10, 1fr);
   grid-template-columns: 49% 49%;
-  height: 87vh;
+  height: 80vh;
   grid-gap: 2%;
   z-index: 100;
 }
-
 .grid-item {
   border: 1px solid #999;
   border-radius: 5px;
@@ -53,10 +59,13 @@ body {
   grid-row-end: 11;
   overflow: scroll;
 }
-
+.selectDiv{
+  width: 15%;
+}
 /*create*/
-.container{
-  height: 86.2vh;
+.createForm{
+  width: 80vw;
+  margin: 0 auto;
 }
 .form-group{
   display: flex;
@@ -67,7 +76,7 @@ body {
   grid-template-rows: repeat(9, 1fr);
   grid-template-columns: 49% 49%;
   grid-gap: 2%;
-  height: 80vh;
+  height: 70vh;
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 5px;
@@ -102,36 +111,38 @@ body {
 .hasInBase{
   padding: 0 20px 0 20px;
   display: flex;
+  justify-content: center;
   width: 100%;
-  justify-content: space-between;
   align-items: center;
   background-color: #333;
   position: absolute;
-  height: 70px;
+  height: 80px;
   z-index: 3;
 }
 .authorization{
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: 15%;
+  width: 10%;
   color: rgb(4, 161, 4);
+  z-index: 200;
 }
 .labels{
   display: flex;
   width: 100%;
-  min-height: 70px;
   justify-content: space-between;
   align-items: center;
+  min-height: 60px;
 }
 .labels:hover{
   cursor: pointer;
 }
 .formsContainer{
+  top: 100%;
   width: 100%;
-  position: relative;
+  position: absolute;
 }
 .registration-form{
-  position: absolute;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -139,7 +150,6 @@ body {
   display: none;
 }
 .sign-in-form{
-  position: absolute;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -147,8 +157,12 @@ body {
   display: none;
 }
 .greeting{
+  display: flex;
   color: whitesmoke;
   font-size: 1.1em;
+  width: 12%;
+  justify-content: space-between;
+  align-items: center;
 }
 .logout:hover{
   cursor: pointer;
@@ -156,7 +170,6 @@ body {
 .logout{
   border:1px solid #fff;
   border-radius: 5px;
-  width: 5%;
   padding: 7px;
   display: flex;
   align-items: center;
@@ -165,4 +178,17 @@ body {
 .logout a{
   text-decoration: none;
   color: rgb(212, 25, 25);
+}
+.scale{
+  transform: scale(1.1);
+  transition: all;
+}
+.alignment{
+  display: flex;
+  justify-content: space-between;
+}
+footer{
+  width: 100%;
+  position: absolute;
+  bottom: 20;
 }
