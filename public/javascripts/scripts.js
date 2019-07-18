@@ -82,6 +82,10 @@ $(document).ready(function() {
       contentType: 'application/json',
       url: '/create'
     }).done(function(data) {
+      if (data.error) {
+        alert(data.error);
+        return;
+      }
       if (data.ok) {
         $('.modal').slideDown(1000);
         $('.modal-title').html('ОК!');
@@ -167,6 +171,14 @@ $(document).ready(function() {
   $('.sign-in').on('click', function () {
     $('.sign-in-form').css({'display': 'flex'});
     $('.registration-form').css({'display': 'none'});
+  })
+  $('.logout').on('mouseover', function () {
+    $(this).css({'background': 'rgb(212, 25, 25)'});
+    $('.logout a:first-child').css({'color': '#fff'});
+  })
+  $('.logout').on('mouseout', function () {
+    $(this).css({'background': ''});
+    $('.logout a:first-child').css({'color': 'rgb(212, 25, 25)'});
   })
   
 });

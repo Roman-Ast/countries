@@ -19,6 +19,10 @@
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
       Search
     </button>
-  </form>
+  </form> 
+  <% if (user.login) { %>
     <a href="/create" data-toggle="tooltip" title="Создайте свою запись!"><img src="/images/create.png"></a>
+  <% } else {%>
+    <span style="width:30px;"></span>
+    <% } %>
 </nav>

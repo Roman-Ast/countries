@@ -52,12 +52,11 @@ app.use(
   express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist'))
 );
 const recordInDb = [];
-// get requests
+  // get requests
 // main page
 app.get('/', async (req, res) => {
   const id = await req.session.userId;
   const login = await req.session.userLogin;
-  console.log(login);
   try {
     Country.find({}, (err, country) => {
       if(!err){
@@ -66,6 +65,7 @@ app.get('/', async (req, res) => {
           valueOfInput: 'search',
           recordsFromDb: country,
           countriesLength: String(country.length),
+          url: {},
           user: { id, login }
         });
       }
@@ -75,17 +75,23 @@ app.get('/', async (req, res) => {
   }
 });
 app.get('/create', (req, res) => {
+  const id = req.session.userId;
+  const login = req.session.userLogin;
+
   res.render('create', {
     valueOfSelect: 'default',
     valueOfInput: 'search',
-
+    url: req.url,
+    user: { id, login }
   });
 })
 app.get('/find', (req, res) => {
   res.render('find', {
     country: recordInDb,
     valueOfSelect: 'default',
-    valueOfInput: 'search'
+    valueOfInput: 'search',
+    url: req.url,
+    user: {}
   });
 });
 
@@ -181,21 +187,35 @@ app.post('/login', async (req, res) => {
 })
 
 app.post('/create', async (req, res) => {
-  try {
-    const record = await Country.create(req.body);
-    
-    if(record){
+  const data = req.body;
+  data.author = req.session.userLogin;
+
+  const isInBaseYet = await Country.findOne({ country: data.country });
+
+  if (!isInBaseYet) {
+    try {
+      const record = await Country.create(data);
+      
+      if(record){
+        res.json({
+          ok: true
+        })
+      }
+    } catch (error) {
       res.json({
-        ok: true
-      })
+        ok: false,
+        fields:req.body
+      });
+      throw new Error(error);
     }
-  } catch (error) {
+  } else {
     res.json({
       ok: false,
-      fields:req.body
-    });
-    throw new Error(error);
+      error: 'Такая запись уже есть в базе данных, проверьте данные'
+    })
   }
+
+  
 })
 
 app.get('/logout', (req, res) => {

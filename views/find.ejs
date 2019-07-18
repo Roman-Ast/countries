@@ -33,7 +33,11 @@
   background-image: url(<%=country[0].backgroundPic%>);
   background-size:cover;
   opacity: 0.5;"
-></div>
+>
+<% if (url === '/find') { %>
+  <h5>автор: <%= country[0].author %></h5>
+<% } %>
+</div>
   <% } else { %>
   <h3>Пожалуйста, воспользуйтесь поиском сверху</h3>
   <% } %> <% include layout/footer.ejs %>
