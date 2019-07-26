@@ -106,6 +106,20 @@ app.get('/find', (req, res) => {
   });
 });
 
+app.get('/chat', (req, res) => {
+  const id = req.session.userId;
+  const login = req.session.userLogin;
+
+  res.render('chat', {
+    recordsFromDb: arrayOfCountriesAlreadyInDB,
+    countriesLength: String(arrayOfCountriesAlreadyInDB.length),
+    country: recordInDb,
+    valueOfSelect: 'default',
+    valueOfInput: 'search',
+    url: req.url,
+    user: { id, login }
+  });
+});
 // post requests
 app.post('/', async (req, res) => {
   const record = await Country.findOne({ [req.body.type]: req.body.name });
