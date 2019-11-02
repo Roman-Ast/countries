@@ -37,6 +37,6 @@
     "express-session": "^1.16.2",
     "git": "^0.1.5",
     "jquery": "^3.4.1",
-    "mongoose": "^5.5.12"
+    "mongoose": "^5.7.5"
   }
 }
